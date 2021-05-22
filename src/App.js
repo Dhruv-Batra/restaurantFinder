@@ -9,6 +9,7 @@ function App() {
         <h2>Restaurant Finder</h2>
       </header>
       <div className="App-body">
+        <br></br>
         <Main/>
       </div>
     </div>
