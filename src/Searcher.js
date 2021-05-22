@@ -5,14 +5,14 @@ const API_KEY = process.env.REACT_APP_api_key;
 
 export default function Searcher(){
 
-    const [data, setData] = useState({'results':[{'photos':["Failed"]}]});
+    const [data, setData] = useState({'results':[{'website':["Failed"]}]});
 
     useEffect(() => {
         const url = new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json");
         url.searchParams.append("location", "-33.8670522,151.1957362");
         url.searchParams.append("radius", "1500");
         url.searchParams.append("keyword", "restaurant");
-        url.searchParams.append("fields", "formatted_address,name,rating,price_level,opennow");
+        url.searchParams.append("fields", "formatted_address,name,rating,price_level,opennow,website");
         url.searchParams.append("key", API_KEY);
         fetch(url)
         .then((resp) => {
@@ -21,17 +21,18 @@ export default function Searcher(){
         .then((obj) => {
             setData(obj);
         });   
+
+        console.log(data['results'])
+
     },[])
 
-    
+
 
     return(
         <div>
-            {data['results'].map((item) => (
-                <Item
-                    item={item}
-                />
-            ))}
+            <Item
+                itemList={data['results']}
+            />
         </div>
     )
 }
