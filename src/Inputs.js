@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import {Button, Select, TextField, FormControl } from "@material-ui/core";
+import {TextField, FormControl } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 
 export default function Inputs(){
 
-    const [searchName, setSearchName] = React.useState(["Restaurants"]);
+    const [searchName, setSearchName] = useState(["Restaurants"]);
 
     const searchTerms = [
         'Restaurants' , 
@@ -24,9 +24,9 @@ export default function Inputs(){
             <br></br>
             <TextField
                 id="outlined-number"
-                label="Search Radius (miles)"
+                label="Search Radius (meters)"
                 type="number"
-                defaultValue="5"
+                defaultValue="1500"
                 variant="outlined"
             />
             <br></br>

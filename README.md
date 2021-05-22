@@ -1,7 +1,9 @@
 # RESTAURANT FINDER
 
 References:
-
+https://material-ui.com/
+https://reactjs.org/docs/forms.html
+https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/append
 
 ## Getting Started with Create React App
 
