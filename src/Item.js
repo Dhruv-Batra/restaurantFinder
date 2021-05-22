@@ -23,8 +23,9 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: 500,
     },
     image: {
-      width: 128,
-      height: 128,
+      width: 150,
+      height: 150,
+      background: '#FEFFFE',
     },
     img: {
       margin: 'auto',
