@@ -22,7 +22,7 @@ export default function Searcher(){
             setData(obj);
         });   
 
-        console.log(data['results'])
+        //console.log(data['results'])
 
     },[])
 

@@ -44,7 +44,6 @@ export default function Item({itemList}){
       url.searchParams.append("maxheight", "128");
       url.searchParams.append("maxwidth", "128");
       url.searchParams.append("photoreference", photoId);
-      console.log(url);
       return(<img src={url['href']}></img>)
     }
 
