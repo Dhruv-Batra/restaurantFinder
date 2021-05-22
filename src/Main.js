@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Inputs from './Inputs'
 import Searcher from './Searcher'
 import Grid from '@material-ui/core/Grid';
-import Map from './Map'
+import Maps from './Maps'
 
 
 export default function Main(){
@@ -17,7 +17,7 @@ export default function Main(){
                     <div><Searcher/></div>
                 </Grid>
                 <Grid item xs={5}>
-                    <div><Map/></div>
+                    <div><Maps/></div>
                 </Grid>
             </Grid>
         </div>
