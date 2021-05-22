@@ -1,6 +1,24 @@
 import BingMapsReact from "bingmaps-react";
 const MAP_KEY = process.env.REACT_APP_MAP_ACCESS_TOKEN;
 
+var map = new BingMapsReact.Map('#myMap', {
+    credentials: {MAP_KEY},
+    center: new BingMapsReact.Location(47.6149, -122.1941)
+});
+
+var center = map.getCenter();
+
+//Create custom Pushpin
+var pin = new BingMapsReact.Pushpin(center, {
+    title: 'Microsoft',
+    subTitle: 'City Center',
+    text: '1'
+});
+
+//Add the pushpin to the map
+map.entities.push(pin);
+
+
 export default function Maps(){
 
     return(
@@ -26,6 +44,7 @@ export default function Maps(){
                     ]
                   }
             />
+            <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
         </div>
     )
 }
