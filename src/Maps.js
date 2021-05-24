@@ -31,6 +31,14 @@ export default function App({cords, itemList}) {
 
   const [showPopup, togglePopup] = React.useState(false);
 
+  function genDir(item){
+    const url = new URL("https://www.google.com/maps/search/?api=1");
+    url.searchParams.append("query", (item.geometry.location.lat+','+item.geometry.location.lng));
+    url.searchParams.append("query_place_id", (item.place_id));
+    //url.searchParams.append("origin", (parseInt(cords[1])+','+parseInt(cords[0])));
+    window.open(url.href);
+  }
+
 
   return (
     <div>   
@@ -45,6 +53,12 @@ export default function App({cords, itemList}) {
                 anchor="top" >
                 <div>
                     <p>{showPopup['name']}</p>
+                    <Button
+                        variant="contained" 
+                        color="primary"
+                        onClick={()=>genDir(showPopup)}
+                        >View Directions
+                    </Button>
                 </div>
                 </Popup>)
                 )}
