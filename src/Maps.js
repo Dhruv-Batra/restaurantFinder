@@ -45,8 +45,8 @@ export default function App({cords, itemList}) {
             <ReactMapGL {...viewport} onViewportChange={setViewport}>
             {
                 (showPopup && (<Popup 
-                latitude= {showPopup.geometry.location.lat-0.001}
-                longitude={showPopup.geometry.location.lng+0.00018}
+                latitude= {showPopup.geometry.location.lat-0.002}
+                longitude={showPopup.geometry.location.lng+0.0005}
                 closeButton={true}
                 closeOnClick={false}
                 onClose={() => togglePopup(false)}
