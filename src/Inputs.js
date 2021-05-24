@@ -1,12 +1,35 @@
 import React, {useState} from "react";
-import {TextField, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio, makeStyles,Typography } from "@material-ui/core";
+import {TextField, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio, makeStyles,Typography, Button } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import clsx from 'clsx';
 
-export default function Inputs(){
+const goog_key = process.env.REACT_APP_goog_key;
+
+export default function Inputs({cords, setCords}){
 
     const [searchName, setSearchName] = useState(["Restaurants"]);
     const [value, setValue] = React.useState('female');
+
+    const [address, setAddress] = useState("Please Enter a Valid Address");
+
+    function handleClick(){
+        try{
+            const url = new URL("https://maps.googleapis.com/maps/api/geocode/json");
+            url.searchParams.append("address", address);
+            url.searchParams.append("key", goog_key);
+            fetch(url)
+            .then((resp) => {
+                return resp.json();
+            })
+            .then((obj) => {
+                return (obj['results'][0].geometry.location);
+            }).then((loc) => {
+                return setCords({'lon':loc['lng'], lat:loc['lat']})
+            });   
+        }catch(e){
+            console.log('Invalid Address')
+        }
+    } 
 
     const useStyles = makeStyles({
         root: {
@@ -47,22 +70,26 @@ export default function Inputs(){
             backgroundColor: '#106ba3',
           },
         },
-      });
+    });
 
-      function StyledRadio(props) {
-        const classes = useStyles();
-      
-        return (
-          <Radio
-            className={classes.root}
-            disableRipple
-            color="default"
-            checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
-            icon={<span className={classes.icon} />}
-            {...props}
-          />
-        );
-      }
+    function StyledRadio(props) {
+    const classes = useStyles();
+    
+    return (
+        <Radio
+        className={classes.root}
+        disableRipple
+        color="default"
+        checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
+        icon={<span className={classes.icon} />}
+        {...props}
+        />
+    );
+    }
+
+    const handleChange = (e) => {
+        return setAddress(e.target.value);
+    }
 
     const searchTerms = [
         'Restaurants' , 
@@ -79,17 +106,18 @@ export default function Inputs(){
             <TextField 
                 id="outlined-bassic" 
                 label="Address"
-                variant="outlined" 
-            />
-            <br></br>
-            <br></br>
-            <TextField
-                id="outlined-number"
-                label="Search Radius (meters)"
-                type="number"
-                defaultValue="1500"
                 variant="outlined"
+                onChange={(e) => handleChange(e)}
             />
+            <br></br>
+            <br></br>
+            <Button
+                onClick={handleClick}
+                variant="contained" 
+                color="primary"
+            >
+            Update Address
+            </Button>
             <br></br>
             <br></br>
             <FormControl>

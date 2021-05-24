@@ -21,9 +21,7 @@ export default function Searcher(){
         .then((obj) => {
             setData(obj);
         });   
-
         //console.log(data['results'])
-
     },[])
 
 
