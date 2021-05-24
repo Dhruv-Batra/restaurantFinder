@@ -7,11 +7,12 @@ import Maps from './Maps'
 export default function Main(){
 
     const [cords, setCords] = useState(['-78.507','38.033']);
-    const [searchArr, setSearchArr] = (['Restaurant']);
+    const [search, setSearch] = useState(['Restaurant']);
 
     useEffect(() => {
-        //console.log(cords);
-    },[cords])
+        console.log(search);
+        console.log(search.join('+'));
+    },[search])
 
     return(cords&&(
         <div>
@@ -20,13 +21,13 @@ export default function Main(){
                     <div><Inputs
                         cords={cords}
                         setCords={setCords}
-                        setSearchArr={setSearchArr}
+                        setSearch={setSearch}
                     /></div>
                 </Grid>
                 <Grid item xs={9}>
                     <div><Searcher
                         cords={cords}
-                        searchArr={searchArr}
+                        searchs={search.join('+')}
                     /></div>
                 </Grid>
             </Grid>

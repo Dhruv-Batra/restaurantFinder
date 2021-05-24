@@ -2,6 +2,7 @@ import * as React from 'react';
 import ReactMapGL, {Popup, Marker} from 'react-map-gl';
 import { Button } from "@material-ui/core";
 import { useState, useEffect } from "react";
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 export default function App({cords, itemList}) {
   const [viewport, setViewport] = React.useState({
@@ -10,7 +11,7 @@ export default function App({cords, itemList}) {
     zoom: 8
   });
 
-  console.log(itemList);
+  //console.log(itemList);
 
   const markers = itemList.map((item) => (
       <Marker longitude={item.geometry.location.lng} latitude={item.geometry.location.lat} >
