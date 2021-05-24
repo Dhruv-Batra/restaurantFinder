@@ -8,7 +8,7 @@ export default function Main(){
 
     const [cords, setCords] = useState(['-78.507','38.033']);
     const [search, setSearch] = useState(['Restaurant']);
-    const [sort, setSort] = useState('default');
+    const [sort, setSort] = useState('rating');
 
     useEffect(() => {
         console.log(sort);

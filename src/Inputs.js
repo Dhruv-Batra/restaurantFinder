@@ -177,7 +177,7 @@ export default function Inputs({setCords, setSearch,setSort}){
             <br></br><br></br>
             <FormControl component="fieldset">
             <FormLabel component="legend">Sort By</FormLabel>
-            <RadioGroup defaultValue="rating" aria-label="sortBy" name="customized-radios" onChange={(e)=>setSorty(e.target.value)}>
+            <RadioGroup aria-label="sortBy" name="customized-radios" onChange={(e)=>setSorty(e.target.value)}>
                 <FormControlLabel value="rating" control={<StyledRadio />} label="Rating" />
                 <FormControlLabel value="price" control={<StyledRadio />} label="Price" />
                 <FormControlLabel value="name" control={<StyledRadio />} label="Name" />

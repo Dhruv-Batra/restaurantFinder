@@ -25,9 +25,8 @@ export default function Searcher({cords,searchs,sort}){
         .then((obj) => {
             setData(obj);
         });   
-        console.log(data['results'][0].opening_hours.open_now);
+        console.log(data['results'][0]);
     },[cords,searchs])
-
 
     const [itemList1, setItemList] = useState(data['results']);
 
@@ -76,7 +75,7 @@ export default function Searcher({cords,searchs,sort}){
                 <Grid item xs={5}>
                     <Item
                         itemList={(sort==='name') ? data['results'].sort(compareName) 
-                        : (sort==='rating') ? data['results'].sort(compareRating)
+                        : (sort==='rating'||sort==='default') ? data['results'].sort(compareRating)
                         : (sort==='price') ? data['results'].sort(comparePrice) : data['results']}
                         cords={cords}
                     />
