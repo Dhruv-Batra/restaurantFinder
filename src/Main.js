@@ -8,26 +8,27 @@ export default function Main(){
 
     const [cords, setCords] = useState(['-78.507','38.033']);
     const [search, setSearch] = useState(['Restaurant']);
+    const [sort, setSort] = useState('default');
 
     useEffect(() => {
-        console.log(search);
-        console.log(search.join('+'));
-    },[search])
+        console.log(sort);
+    },[sort])
 
     return(cords&&(
         <div>
             <Grid container spacing={9} justify="right">
                 <Grid item xs={3}>
                     <div><Inputs
-                        cords={cords}
                         setCords={setCords}
                         setSearch={setSearch}
+                        setSort={setSort}
                     /></div>
                 </Grid>
                 <Grid item xs={9}>
                     <div><Searcher
                         cords={cords}
                         searchs={search.join('+')}
+                        sort={sort}
                     /></div>
                 </Grid>
             </Grid>

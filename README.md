@@ -1,11 +1,5 @@
 # RESTAURANT FINDER
 
-References:
-https://material-ui.com/
-https://reactjs.org/docs/forms.html
-https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/append
-https://developers.google.com/maps/documentation/javascript/places
-
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

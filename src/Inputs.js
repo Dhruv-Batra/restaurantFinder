@@ -5,15 +5,16 @@ import clsx from 'clsx';
 
 const goog_key = process.env.REACT_APP_goog_key;
 
-export default function Inputs({cords, setCords, setSearch}){
+export default function Inputs({setCords, setSearch,setSort}){
 
     const [searchName, setSearchName] = useState(["Restaurants"]);
     const [value, setValue] = useState(['']);
-
+    const [sorty, setSorty] = useState('');
     const [address, setAddress] = useState("Please Enter a Valid Address");
 
     useEffect(() => {
-    },[value])
+        return setSort(sorty);
+    },[sorty])
 
 
     function handleSearch(){
@@ -176,7 +177,7 @@ export default function Inputs({cords, setCords, setSearch}){
             <br></br><br></br>
             <FormControl component="fieldset">
             <FormLabel component="legend">Sort By</FormLabel>
-            <RadioGroup defaultValue="rating" aria-label="sortBy" name="customized-radios">
+            <RadioGroup defaultValue="rating" aria-label="sortBy" name="customized-radios" onChange={(e)=>setSorty(e.target.value)}>
                 <FormControlLabel value="rating" control={<StyledRadio />} label="Rating" />
                 <FormControlLabel value="price" control={<StyledRadio />} label="Price" />
                 <FormControlLabel value="name" control={<StyledRadio />} label="Name" />

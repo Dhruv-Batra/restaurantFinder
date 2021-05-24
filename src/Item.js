@@ -10,6 +10,7 @@ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0v
 crossorigin=""></script>
 
 const API_KEY = process.env.REACT_APP_api_key;
+const goog_key = process.env.REACT_APP_goog_key;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,8 +36,16 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function Item({itemList}){
+export default function Item({itemList, cords}){
     const classes = useStyles();
+
+    function genDir(item){
+      const url = new URL("https://www.google.com/maps/search/?api=1");
+      url.searchParams.append("query", (item.geometry.location.lat+','+item.geometry.location.lng));
+      url.searchParams.append("query_place_id", (item.place_id));
+      //url.searchParams.append("origin", (parseInt(cords[1])+','+parseInt(cords[0])));
+      window.open(url.href);
+    }
 
     function getImage(photoId) {
       const url = new URL("https://maps.googleapis.com/maps/api/place/photo");
@@ -77,7 +86,7 @@ export default function Item({itemList}){
                                 {item['name']}
                               </Typography>
                               <Typography variant="body1" gutterBottom>
-                              { (item['price_level'] != undefined) ? "Rating: "+item['rating']+"/5" : ''}
+                              { (item['rating'] != undefined) ? "Rating: "+item['rating']+"/5" : ''}
                               </Typography>
                               <Typography variant="body1" gutterBottom>
                               { (item['price_level'] != undefined) ? "Price: "+item['price_level']+"/5" : ''}
@@ -87,6 +96,7 @@ export default function Item({itemList}){
                               <Button
                                 variant="contained" 
                                 color="primary"
+                                onClick={()=>genDir(item)}
                               >View Directions</Button>
                             </Grid>
                           </Grid>

@@ -5,12 +5,12 @@ import Grid from '@material-ui/core/Grid';
 
 const API_KEY = process.env.REACT_APP_api_key;
 
-export default function Searcher({cords,searchs}){
+export default function Searcher({cords,searchs,sort}){
 
     const [data, setData] = useState({'results':[{'photos':[{'photoreference':["Failed"]}],'geometry':{'location':{'lat':30,'lng':-77}}}]});
 
     useEffect(() => {
-        console.log(searchs);
+        //console.log(searchs);
         const cordSearch = (cords[1]+','+cords[0]);
         const url = new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json");
         url.searchParams.append("location", cordSearch);
@@ -25,17 +25,60 @@ export default function Searcher({cords,searchs}){
         .then((obj) => {
             setData(obj);
         });   
-        console.log(data['results'])
+        console.log(data['results']);
     },[cords,searchs])
 
 
+    const [itemList1, setItemList] = useState(data['results']);
+
+    function compareName(a, b) {
+        if (a.name<b.name) {
+          return -1;
+        }
+        if (a.name>b.name) {
+          return 1;
+        }
+        // a must be equal to b
+        return 0;
+    }
+
+    function compareRating(a, b) {
+        if (a['rating']<b['rating']) {
+          return 1;
+        }
+        if (a['rating']>b['rating']) {
+          return -1;
+        }
+        if (a['rating']) {
+            return -1;
+        }
+        // a must be equal to b
+        return 0;
+    }
+
+    function comparePrice(a, b) {
+        if (a['price_level']<b['price_level']) {
+          return -1;
+        }
+        if (a['price_level']>b['price_level']) {
+          return 1;
+        }
+        if (a['price_level']) {
+            return -1;
+        }
+        // a must be equal to b
+        return 0;
+    }
 
     return(
         <div>
             <Grid container spacing={9} justify="right">
                 <Grid item xs={5}>
                     <Item
-                        itemList={data['results']}
+                        itemList={(sort==='name') ? data['results'].sort(compareName) 
+                        : (sort==='rating') ? data['results'].sort(compareRating)
+                        : (sort==='price') ? data['results'].sort(comparePrice) : data['results']}
+                        cords={cords}
                     />
                 </Grid>
                 <Grid item xs={4}>
