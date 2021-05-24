@@ -87,7 +87,7 @@ export default function Item({itemList}){
                               <Button
                                 variant="contained" 
                                 color="primary"
-                              >View On Map</Button>
+                              >View Directions</Button>
                             </Grid>
                           </Grid>
                         </Grid>

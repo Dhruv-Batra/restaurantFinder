@@ -23,15 +23,10 @@ export default function Main(){
                         setSearchArr={setSearchArr}
                     /></div>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={9}>
                     <div><Searcher
                         cords={cords}
                         searchArr={searchArr}
-                    /></div>
-                </Grid>
-                <Grid item xs={5}>
-                    <div><Maps
-                        cords={cords}
                     /></div>
                 </Grid>
             </Grid>

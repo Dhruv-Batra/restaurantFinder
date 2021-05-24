@@ -2,6 +2,10 @@ import React, {useState, useEffect} from "react";
 import {TextField, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio, makeStyles,Typography, Button } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import clsx from 'clsx';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from '@material-ui/core/Select';
 
 const goog_key = process.env.REACT_APP_goog_key;
 
@@ -13,11 +17,11 @@ export default function Inputs({cords, setCords, setSearchArr}){
 
     const [address, setAddress] = useState("Please Enter a Valid Address");
 
-    function handleCat(event,value){
-        for(const i=0;i<value.length();i++){
-            console.log(value);
-        }
-    }
+    const [term, setTerm] = React.useState('restaurant');
+
+    const handleChange2 = (event) => {
+      setTerm(event.target.value);
+    };
 /*
     useEffect(() => {
         return setSearchArr(searchArr2);
@@ -48,11 +52,18 @@ export default function Inputs({cords, setCords, setSearchArr}){
         });
     }
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles((theme) => ({
         root: {
           '&:hover': {
             backgroundColor: 'transparent',
           },
+        },
+        formControl: {
+            margin: theme.spacing(1),
+            minWidth: 120,
+          },
+        selectEmpty: {
+            marginTop: theme.spacing(2),
         },
         icon: {
           borderRadius: '50%',
@@ -87,7 +98,9 @@ export default function Inputs({cords, setCords, setSearchArr}){
             backgroundColor: '#106ba3',
           },
         },
-    });
+    }));
+
+    const classes = useStyles();
 
     function StyledRadio(props) {
     const classes = useStyles();
@@ -146,7 +159,36 @@ export default function Inputs({cords, setCords, setSearchArr}){
             </Button>
             <br></br>
             <br></br>
-            <FormControl>
+            
+            <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel id="demo-simple-select-outlined-label">Search Terms</InputLabel>
+            <Select
+                value={term}
+                onChange={handleChange2}
+                label="Search Terms"
+                defaultValue='restaurants'
+                >
+                <MenuItem value={'restaurants'}>Restaurants</MenuItem>
+                <MenuItem value={'Cafe'}>Cafe</MenuItem>
+                <MenuItem value={'Bar'}>Bar</MenuItem>
+            </Select>
+            </FormControl>
+
+            <br></br><br></br>
+            <FormControl component="fieldset">
+            <FormLabel component="legend">Sort By</FormLabel>
+            <RadioGroup defaultValue="rating" aria-label="sortBy" name="customized-radios">
+                <FormControlLabel value="rating" control={<StyledRadio />} label="Rating" />
+                <FormControlLabel value="price" control={<StyledRadio />} label="Price" />
+                <FormControlLabel value="name" control={<StyledRadio />} label="Name" />
+            </RadioGroup>
+            </FormControl>
+
+        </div>
+    )
+
+    /*
+    <FormControl>
                 <Autocomplete
                     multiple
                     id="tags-outlined"
@@ -162,16 +204,5 @@ export default function Inputs({cords, setCords, setSearchArr}){
                     )}
                 />
             </FormControl>
-            <br></br><br></br>
-            <FormControl component="fieldset">
-            <FormLabel component="legend">Sort By</FormLabel>
-            <RadioGroup defaultValue="rating" aria-label="sortBy" name="customized-radios">
-                <FormControlLabel value="rating" control={<StyledRadio />} label="Rating" />
-                <FormControlLabel value="price" control={<StyledRadio />} label="Price" />
-                <FormControlLabel value="name" control={<StyledRadio />} label="Name" />
-            </RadioGroup>
-            </FormControl>
-
-        </div>
-    )
+    */
 }

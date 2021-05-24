@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
 import Item from './Item'
+import Maps from './Maps'
+import Grid from '@material-ui/core/Grid';
 
 const API_KEY = process.env.REACT_APP_api_key;
 
 export default function Searcher({cords}){
 
-    const [data, setData] = useState({'results':[{'photos':[{'photoreference':["Failed"]}]}]});
+    const [data, setData] = useState({'results':[{'photos':[{'photoreference':["Failed"]}],'geometry':{'location':{'lat':30,'lng':-77}}}]});
 
     useEffect(() => {
         const cordSearch = (cords[1]+','+cords[0]);
@@ -22,16 +24,26 @@ export default function Searcher({cords}){
         .then((obj) => {
             setData(obj);
         });   
-        //console.log(data['results'])
+        console.log(data['results'])
     },[cords])
 
 
 
     return(
         <div>
-            <Item
-                itemList={data['results']}
-            />
+            <Grid container spacing={9} justify="right">
+                <Grid item xs={5}>
+                    <Item
+                        itemList={data['results']}
+                    />
+                </Grid>
+                <Grid item xs={4}>
+                    <div><Maps
+                        cords={cords}
+                        itemList={data['results']}
+                    /></div>
+                </Grid>
+            </Grid>
         </div>
     )
 }
