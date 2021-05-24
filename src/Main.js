@@ -6,20 +6,15 @@ import Maps from './Maps'
 
 export default function Main(){
 
-    const [cords, setCords] = useState({'lon':null, lat:'null'});
-
-    if (cords.lon==null && cords.lat===null){
-        navigator.geolocation.getCurrentPosition(function(position) { //get initial position
-        setCords({'lon':position.coords.longitude, lat:'position.coords.latitude'});
-        });
-    }
+    const [cords, setCords] = useState(['-78.507','38.033']);
 
     useEffect(() => {
-        console.log(cords);
+        console.log(cords[1]+','+cords[0]);
     },[cords])
 
-    return(
+    return(cords&&(
         <div>
+            <p>{(cords[1]+','+cords[0])}</p>
             <Grid container spacing={9} justify="right">
                 <Grid item xs={3}>
                     <div><Inputs
@@ -37,5 +32,5 @@ export default function Main(){
                 </Grid>
             </Grid>
         </div>
-    )
+    ))
 }

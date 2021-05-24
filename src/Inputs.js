@@ -24,12 +24,18 @@ export default function Inputs({cords, setCords}){
             .then((obj) => {
                 return (obj['results'][0].geometry.location);
             }).then((loc) => {
-                return setCords({'lon':loc['lng'], lat:loc['lat']})
+                return setCords([loc['lng'], loc['lat']])
             });   
         }catch(e){
             console.log('Invalid Address')
         }
-    } 
+    }
+
+    function currentCords(){
+        navigator.geolocation.getCurrentPosition(function(position) {
+            return setCords([position.coords.longitude,position.coords.latitude]);
+        });
+    }
 
     const useStyles = makeStyles({
         root: {
@@ -117,6 +123,15 @@ export default function Inputs({cords, setCords}){
                 color="primary"
             >
             Update Address
+            </Button>
+            <br></br>
+            <br></br>
+            <Button
+            onClick={currentCords}
+            variant="contained" 
+            color="primary"
+            >
+            Current Location
             </Button>
             <br></br>
             <br></br>
