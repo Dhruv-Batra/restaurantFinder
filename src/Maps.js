@@ -1,14 +1,25 @@
 import * as React from 'react';
 import ReactMapGL, {Popup, Marker} from 'react-map-gl';
 import { Button } from "@material-ui/core";
+import { useState, useEffect } from "react";
 
-export default function App() {
+export default function App({cords}) {
   const [viewport, setViewport] = React.useState({
-    longitude: -122.45,
-    latitude: 37.78,
-    zoom: 14
+    longitude: parseInt(cords[0]),
+    latitude: parseInt(cords[1]),
+    zoom: 12
   });
+
+  useEffect(() => {
+    setViewport({
+        longitude: parseInt(cords[0]),
+        latitude: parseInt(cords[1]),
+        zoom: 12
+      });
+  },[cords])
   const [showPopup, togglePopup] = React.useState(false);
+
+  console.log(cords);
 
   return (
     <ReactMapGL {...viewport} width="35vw" height="75vh" onViewportChange={setViewport}>

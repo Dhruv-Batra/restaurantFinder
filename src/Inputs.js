@@ -1,17 +1,28 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {TextField, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio, makeStyles,Typography, Button } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import clsx from 'clsx';
 
 const goog_key = process.env.REACT_APP_goog_key;
 
-export default function Inputs({cords, setCords}){
+export default function Inputs({cords, setCords, setSearchArr}){
 
     const [searchName, setSearchName] = useState(["Restaurants"]);
     const [value, setValue] = React.useState('female');
+    //const [searchArr2, setSearchArr2] = React.useState('female');
 
     const [address, setAddress] = useState("Please Enter a Valid Address");
 
+    function handleCat(event,value){
+        for(const i=0;i<value.length();i++){
+            console.log(value);
+        }
+    }
+/*
+    useEffect(() => {
+        return setSearchArr(searchArr2);
+    },[searchArr2])
+*/
     function handleClick(){
         try{
             const url = new URL("https://maps.googleapis.com/maps/api/geocode/json");
