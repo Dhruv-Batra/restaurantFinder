@@ -14,9 +14,10 @@ export default function App({cords, itemList}) {
   //console.log(itemList);
 
   const markers = itemList.map((item) => (
+    (item.opening_hours != undefined && item.opening_hours.open_now) ? (
       <Marker longitude={item.geometry.location.lng} latitude={item.geometry.location.lat} >
         <img src="https://img.icons8.com/color/48/000000/map-pin.png" onClick={() => togglePopup(item)}/>
-      </Marker>
+      </Marker>) : <div></div>
   ), [itemList]);
 
   useEffect(() => {

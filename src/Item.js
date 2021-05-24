@@ -65,12 +65,13 @@ export default function Item({itemList, cords}){
       { (item['vicinity'] != undefined) ? "Vicinity: "+item['vicinity'] : ''}
      </Typography>
     */
-
+    console.log(itemList)
     return(
         <div>
 
             <div>
                 {itemList.map((item) => (
+                  (item.opening_hours != undefined && item.opening_hours.open_now) ? (
                     <div className={classes.root}>
                     <Paper className={classes.paper}>
                       <Grid container spacing={2}>
@@ -103,7 +104,7 @@ export default function Item({itemList, cords}){
                         </Grid>
                       </Grid>
                     </Paper>
-                  </div>
+                  </div>) : <div>{/*item['name']*/}</div>
                 ))}
             </div>  
         </div>

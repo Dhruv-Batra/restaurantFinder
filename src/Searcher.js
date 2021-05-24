@@ -7,7 +7,7 @@ const API_KEY = process.env.REACT_APP_api_key;
 
 export default function Searcher({cords,searchs,sort}){
 
-    const [data, setData] = useState({'results':[{'photos':[{'photoreference':["Failed"]}],'geometry':{'location':{'lat':30,'lng':-77}}}]});
+    const [data, setData] = useState({'results':[{'photos':[{'photoreference':["Failed"]}],'geometry':{'location':{'lat':30,'lng':-77}},'opening_hours':[{'open_now':false}]}]});
 
     useEffect(() => {
         //console.log(searchs);
@@ -25,7 +25,7 @@ export default function Searcher({cords,searchs,sort}){
         .then((obj) => {
             setData(obj);
         });   
-        console.log(data['results']);
+        console.log(data['results'][0].opening_hours.open_now);
     },[cords,searchs])
 
 

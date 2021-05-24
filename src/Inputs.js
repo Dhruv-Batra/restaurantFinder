@@ -161,7 +161,7 @@ export default function Inputs({setCords, setSearch,setSort}){
                     <TextField
                         {...searchTerms}
                         variant="outlined"
-                        label="filterSelectedOptions"
+                        label="Filter Selected Options"
                     />
                     )}
                 />
