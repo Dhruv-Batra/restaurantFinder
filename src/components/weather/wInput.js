@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import Current from './Current';
 import Button from "@material-ui/core/Button";
 import Hourly from './Hourly';
+import {CordsContext} from '../../contexts/CordsContext'
 const API_KEY = process.env.REACT_APP_api_key_w;
 const goog_key = process.env.REACT_APP_goog_key;
 
@@ -11,34 +12,17 @@ export default function WInput(w){
     const [showHourly, setShowHourly] = useState(false)
 
     const [weather, setWeather] = useState(null);
-    const [lon, setLon] = useState(null);
-    const [lat, setLat] = useState(null);
-
+    //const [cords, setCords] = useState(['-78.507','38.033']);
+    const {cords, setCords} = useContext(CordsContext);
     const [address, setAddress] = useState("Please Enter a Valid Address");
-    const [cords, setCords] = useState(['-78.507','38.033']);
+
+    const [lon, setLon] = useState(cords[0]);
+    const [lat, setLat] = useState(cords[1]);
 
     useEffect(() => {
-        
-    
-        if(lat==null||lon==null){
-            try{
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    setLon(position.coords.longitude);
-                    setLat(position.coords.latitude);
-                    console.log(position.coords.longitude);
-                });
-            }
-            catch{
-                return(
-                    <div>
-                        <h1>Error</h1>
-                        <h2>Please Allow Location Services for this Website</h2>
-                        <h3><a href="https://www.lifewire.com/denying-access-to-your-location-4027789">Helpful Article</a></h3>
-                        <img src="https://t3.ftcdn.net/jpg/01/28/36/52/360_F_128365273_0PhzzfSuq3NJbDbaNqE4yv5hlXEyHBN8.webp"></img>
-                    </div>
-            );}
-        }
-    },[]);
+        setCords([lon,lat])
+    },[lat,lon])
+
     //<pre>{JSON.stringify(weather, undefined, 4)}</pre>
 
     function handleClick(){
@@ -64,7 +48,7 @@ export default function WInput(w){
         return setAddress(e.target.value);
     }
 
-    return(lon&&lat&&(
+    return(cords&&lon&&lat&&(
         <div>
             <TextField 
                 id="outlined-bassic" 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Inputs from './Inputs'
 import Searcher from './Searcher'
 import Grid from '@material-ui/core/Grid';
-import CordsContext from '../../contexts/CordsContext';
+import {CordsContext} from '../../contexts/CordsContext';
 
 export default function Main(){
 

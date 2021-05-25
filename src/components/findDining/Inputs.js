@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {TextField, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio, makeStyles,Typography, Button } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import clsx from 'clsx';
+import CurLoc from '../CurLoc'
 
 const goog_key = process.env.REACT_APP_goog_key;
 
@@ -38,12 +39,6 @@ export default function Inputs({setCords, setSearch,setSort}){
         }catch(e){
             console.log('Invalid Address')
         }
-    }
-
-    function currentCords(){
-        navigator.geolocation.getCurrentPosition(function(position) {
-            return setCords([position.coords.longitude,position.coords.latitude]);
-        });
     }
 
     const useStyles = makeStyles({
@@ -140,13 +135,7 @@ export default function Inputs({setCords, setSearch,setSort}){
             </Button>
             <br></br>
             <br></br>
-            <Button
-            onClick={currentCords}
-            variant="contained" 
-            color="primary"
-            >
-            Current Location
-            </Button>
+            <CurLoc/>
             <br></br>
             <br></br>
             <FormControl>
