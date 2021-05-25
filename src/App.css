@@ -22,6 +22,9 @@
   justify-content: top;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: relative;
+  margin-top: 0;
+  padding-top: 0px;
 }
 
 .App-link {
@@ -45,4 +48,14 @@
   border:3px solid #000;
   border-radius: 10px;
   grid-gap: 5px;
+}
+
+.navbaar {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  gap: 30px 20px;
+}
+
+#header h2{
+  margin:0px;
 }
