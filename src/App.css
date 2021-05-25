@@ -54,8 +54,9 @@
   display: grid;
   grid-template-columns: repeat(2, 2fr);
   gap: 30px 20px;
+  grid-auto-columns: 50vh;
 }
 
-#header h2{
-  margin:0px;
+.caards {
+  text-decoration: none;
 }
