@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import Main from './components/Main'
+import Main from './components/findDining/Main'
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Navbar from './components/navbar'
+import Navbar from './components/findDining/navbar'
 import { Button } from "@material-ui/core";
 function App() {
 
