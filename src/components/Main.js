@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Inputs from './Inputs'
 import Searcher from './Searcher'
 import Grid from '@material-ui/core/Grid';
-import Maps from './Maps'
 
 export default function Main(){
 

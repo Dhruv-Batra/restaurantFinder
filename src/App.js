@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Main from './Main'
-
+import Main from './components/Main'
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 function App() {
 
   document.title = "Find Dining";
@@ -13,7 +14,9 @@ function App() {
       </header>
       <div className="App-body">
         <br></br>
-        <Main/>
+        <Switch>
+          <Route path='/' component={Main} />
+        </Switch>
       </div>
     </div>
   );

@@ -104,7 +104,7 @@ export default function Item({itemList, cords}){
                         </Grid>
                       </Grid>
                     </Paper>
-                  </div>) : <div>{/*item['name']*/}</div>
+                    </div>) : <div>{/*item['name']*/}</div>
                 ))}
             </div>  
         </div>

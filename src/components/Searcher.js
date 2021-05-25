@@ -25,7 +25,7 @@ export default function Searcher({cords,searchs,sort}){
         .then((obj) => {
             setData(obj);
         });   
-        console.log(data['results'][0]);
+        console.log(data['results']);
     },[cords,searchs])
 
     const [itemList1, setItemList] = useState(data['results']);
