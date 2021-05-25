@@ -25,7 +25,7 @@ export default function Main(){
                         setSort={setSort}
                     /></div>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={8}>
                     <div><Searcher
                         cords={cords}
                         searchs={search.join('+')}

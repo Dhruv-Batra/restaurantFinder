@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 const API_KEY = process.env.REACT_APP_api_key_w;
 
 export default function Current({long,lati}){
@@ -31,7 +32,7 @@ export default function Current({long,lati}){
     return(weather&&(
         <div>
             <div>
-                <h1>{weather.name}</h1>
+                <h2>{weather.name}</h2>
                 <p>Current Temperature: {weather.main.temp}</p>
                 <p>Feels Like: {weather.main.feels_like}</p>
                 <img src={"https://openweathermap.org/img/w/"+weather.weather[0].icon+".png"}></img>

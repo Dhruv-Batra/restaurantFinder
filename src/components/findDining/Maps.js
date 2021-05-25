@@ -26,7 +26,7 @@ export default function App({cords, itemList}) {
         latitude: parseInt(cords[1])+0.03,
         zoom: 7/*13*/,
         width:"35vw",
-        height:"65vh"
+        height:"75vh"
       });
   },[cords])
 

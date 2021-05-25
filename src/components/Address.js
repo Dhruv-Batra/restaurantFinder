@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
-import {Button, TextField} from '@material-ui/core/';
+import {Button, TextField, Grid} from '@material-ui/core/';
 import {CordsContext} from '../contexts/CordsContext';
+import CurLoc from './CurLoc'
 
 const goog_key = process.env.REACT_APP_goog_key;
 
@@ -42,13 +43,26 @@ export default function Address(){
             />
             <br></br>
             <br></br>
-            <Button
-                onClick={handleClick}
-                variant="contained" 
-                color="primary"
+            <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+                spacing={2}
             >
-            Update Address
-            </Button>
+                <Grid item xs={5}>
+                    <Button
+                        onClick={handleClick}
+                        variant="contained" 
+                        color="primary"
+                    >
+                    Update Address
+                    </Button>
+                </Grid>
+                <Grid item xs={5}>
+                    <CurLoc/>
+                </Grid>
+            </Grid>
         </div>
     )
 }

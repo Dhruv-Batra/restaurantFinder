@@ -95,8 +95,6 @@ export default function Inputs({setCords, setSearch,setSort}){
             <br></br>
             <Address/>
             <br></br><br></br>
-            <CurLoc/>
-            <br></br><br></br>
             <FormControl>
                 <Autocomplete
                     multiple
@@ -105,6 +103,7 @@ export default function Inputs({setCords, setSearch,setSort}){
                     defaultValue={[searchTerms[0]]}
                     filterSelectedOptions
                     onChange={(e,v) => handleChangeSearch(e,v)}
+                    size= 'small'
                     renderInput={(searchTerms) => (
                     <TextField
                         {...searchTerms}
