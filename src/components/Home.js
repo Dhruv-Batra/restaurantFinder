@@ -35,7 +35,7 @@ export default function  Home(){
                         component="img"
                         alt="Find Dining"
                         height="140"
-                        image="https://www.mtievents.com/wp-content/uploads/2017/11/progressive-dining.jpg"//"/images/dining.jpg"
+                        image="https://www.mtievents.com/wp-content/uploads/2017/11/progressive-dining.jpg"
                     />
                     <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">

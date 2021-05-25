@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Inputs from './Inputs'
 import Searcher from './Searcher'
 import Grid from '@material-ui/core/Grid';
+import CordsContext from '../../contexts/CordsContext';
 
 export default function Main(){
 
-    const [cords, setCords] = useState(['-78.507','38.033']);
+    const {cords, setCords} = useContext(CordsContext);
+    
     const [search, setSearch] = useState(['Restaurant']);
     const [sort, setSort] = useState('rating');
 
