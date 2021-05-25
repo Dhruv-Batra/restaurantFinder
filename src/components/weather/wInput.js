@@ -59,6 +59,7 @@ export default function WInput(w){
                 direction="row  "
                 justify="center"
                 alignItems="top"
+                spacing={5}
             >
                     <Grid item xs={3}>
                         <Address/>

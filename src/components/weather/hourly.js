@@ -13,6 +13,7 @@ const API_KEY = process.env.REACT_APP_api_key_w;
 const useStyles = makeStyles({
     table: {
         'width': '60vw',
+
     },
 });
 

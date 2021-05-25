@@ -72,7 +72,7 @@ export default function Searcher({cords,searchs,sort}){
     return(
         <div>
             <Grid container spacing={9} justify="right">
-                <Grid item xs={5}>
+                <Grid item xs={6}>
                     <Item
                         itemList={(sort==='name') ? data['results'].sort(compareName) 
                         : (sort==='rating'||sort==='default') ? data['results'].sort(compareRating)

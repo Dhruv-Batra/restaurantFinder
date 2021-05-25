@@ -22,11 +22,9 @@ export default function App({cords, itemList}) {
 
   useEffect(() => {
     setViewport({
-        longitude: parseInt(cords[0])-0.5,
-        latitude: parseInt(cords[1])+0.03,
+        longitude: parseInt(cords[0]),//-0.5,
+        latitude: parseInt(cords[1]),//+0.03,
         zoom: 7/*13*/,
-        width:"35vw",
-        height:"75vh"
       });
   },[cords])
 
@@ -43,11 +41,16 @@ export default function App({cords, itemList}) {
 
   return (
     <div>   
-            <ReactMapGL {...viewport} onViewportChange={setViewport}>
+            <ReactMapGL {...viewport} 
+              onViewportChange={setViewport}
+              width='35vw'
+              height='32vw'
+            >
             {
                 (showPopup && (<Popup 
                 latitude= {showPopup.geometry.location.lat-0.002}
                 longitude={showPopup.geometry.location.lng+0.0005}
+                
                 closeButton={true}
                 closeOnClick={false}
                 onClose={() => togglePopup(false)}
