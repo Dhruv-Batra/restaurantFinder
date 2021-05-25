@@ -3,15 +3,13 @@ import {TextField, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio, 
 import { Autocomplete } from "@material-ui/lab";
 import clsx from 'clsx';
 import CurLoc from '../CurLoc'
-
-const goog_key = process.env.REACT_APP_goog_key;
+import Address from '../Address'
 
 export default function Inputs({setCords, setSearch,setSort}){
 
     const [searchName, setSearchName] = useState(["Restaurants"]);
     const [value, setValue] = useState(['']);
     const [sorty, setSorty] = useState('');
-    const [address, setAddress] = useState("Please Enter a Valid Address");
 
     useEffect(() => {
         return setSort(sorty);
@@ -20,25 +18,6 @@ export default function Inputs({setCords, setSearch,setSort}){
 
     function handleSearch(){
         return setSearch(value);
-    }
-
-    function handleClick(){
-        try{
-            const url = new URL("https://maps.googleapis.com/maps/api/geocode/json");
-            url.searchParams.append("address", address);
-            url.searchParams.append("key", goog_key);
-            fetch(url)
-            .then((resp) => {
-                return resp.json();
-            })
-            .then((obj) => {
-                return (obj['results'][0].geometry.location);
-            }).then((loc) => {
-                return setCords([loc['lng'], loc['lat']])
-            });   
-        }catch(e){
-            console.log('Invalid Address')
-        }
     }
 
     const useStyles = makeStyles({
@@ -97,10 +76,6 @@ export default function Inputs({setCords, setSearch,setSort}){
     );
     }
 
-    const handleChange = (e) => {
-        return setAddress(e.target.value);
-    }
-
     const handleChangeSearch = (e,v) => {
         return setValue(v);
     }
@@ -118,26 +93,10 @@ export default function Inputs({setCords, setSearch,setSort}){
                 Filters
             </Typography></u>
             <br></br>
-            <TextField 
-                id="outlined-bassic" 
-                label="Address"
-                variant="outlined"
-                onChange={(e) => handleChange(e)}
-            />
-            <br></br>
-            <br></br>
-            <Button
-                onClick={handleClick}
-                variant="contained" 
-                color="primary"
-            >
-            Update Address
-            </Button>
-            <br></br>
-            <br></br>
+            <Address/>
+            <br></br><br></br>
             <CurLoc/>
-            <br></br>
-            <br></br>
+            <br></br><br></br>
             <FormControl>
                 <Autocomplete
                     multiple

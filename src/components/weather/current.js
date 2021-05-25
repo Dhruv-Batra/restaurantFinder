@@ -24,7 +24,7 @@ export default function Current({long,lati}){
             setWeather(false);
             }
         });
-    }, []);
+    }, [long,lati]);
 
     //<pre>{JSON.stringify(weather, undefined, 4)}</pre>
 

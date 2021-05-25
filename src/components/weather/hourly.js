@@ -22,7 +22,7 @@ export default function Hourly({long,lati}){
             // 200 means no errors
             setHour(obj);
         });
-    }, []);
+    }, [long,lati]);
 
 
 
