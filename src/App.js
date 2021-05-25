@@ -8,7 +8,7 @@ import WInput from './components/weather/WInput'
 import Home from './components/Home'
 function App() {
 
-  document.title = "Find Dining";
+  document.title = "Outing Planner";
 
 //<Route path='/' component={Main} />
 //<Route path='/weather' component={WInput} />

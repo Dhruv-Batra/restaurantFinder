@@ -19,7 +19,7 @@ export default function Navbar() {
     return (
       <div>
         <header className="App-header">
-          <h2>Plan Outing</h2>
+          <h2>Outing Planner</h2>
           <Grid
             container
             direction="row"

@@ -56,7 +56,7 @@ export default function  Home(){
                         component="img"
                         alt="Weather"
                         height="140"
-                        image="https://resources.altair.com/corp/images/industries_weather_cylc_image_left_interior_desktop_400pxhigh.jpg"//"/images/dining.jpg"
+                        image="https://media.wired.co.uk/photos/606dba1c9a15f73a597a2aa1/master/w_1600%2Cc_limit/weather.jpg"//"/images/dining.jpg"
                     />
                     <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
