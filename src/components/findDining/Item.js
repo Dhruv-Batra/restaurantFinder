@@ -71,7 +71,9 @@ export default function Item({itemList, cords}){
                       <Grid container spacing={2}>
                         <Grid item>
                           <ButtonBase className={classes.image}>
-                            {getImage(item['photos'][0]['photo_reference'])}
+                            {
+                              (item['photos']!=undefined) ? (getImage(item['photos'][0]['photo_reference'])) : <img src="https://www.uidownload.com/files/489/93/182/cutlery-spoon-fork-knife-icon.png"/>
+                            }
                           </ButtonBase>
                         </Grid>
                         <Grid item xs={12} sm container>

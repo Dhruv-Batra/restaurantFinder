@@ -16,7 +16,7 @@ export default function App({cords, itemList}) {
   const markers = itemList.map((item) => (
     (item.opening_hours != undefined && item.opening_hours.open_now) ? (
       <Marker longitude={item.geometry.location.lng} latitude={item.geometry.location.lat} >
-        <img style={{width:'5vh'}} src="https://lh3.googleusercontent.com/proxy/uOCeCeEBK_1zpXC5arL4n9mIp8eBtHI8xUUVR4Bq3hE5Z3T8uCf9OVNoK854Z8xk0DtXPQ0Ut9WaGcmXo6Oh2pLnnizm6zkHGXnB8CVxd6IwWmZTvo2iAv2LYgxur8xD" onClick={() => togglePopup(item)}/>
+        <img style={{width:'5vh'}} src="https://img.icons8.com/plasticine/50/000000/map-pin.png" onClick={() => togglePopup(item)}/>
       </Marker>) : <div></div>
   ), [itemList]);
 
