@@ -2,12 +2,10 @@ import React, {useState, useEffect} from "react";
 import {TextField, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio, makeStyles,Typography, Button } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import clsx from 'clsx';
-import CurLoc from '../CurLoc'
 import Address from '../Address'
 
 export default function Inputs({setCords, setSearch,setSort}){
 
-    const [searchName, setSearchName] = useState(["Restaurants"]);
     const [value, setValue] = useState(['']);
     const [sorty, setSorty] = useState('');
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Inputs from './Inputs'
 import Searcher from './Searcher'
 import Grid from '@material-ui/core/Grid';
@@ -11,13 +11,9 @@ export default function Main(){
     const [search, setSearch] = useState(['Restaurant']);
     const [sort, setSort] = useState('rating');
 
-    useEffect(() => {
-        console.log(sort);
-    },[sort])
-
     return(cords&&(
         <div>
-            <Grid container spacing={9} justify="right">
+            <Grid container spacing={9} justify="flex-start">
                 <Grid item xs={3}>
                     <div><Inputs
                         setCords={setCords}

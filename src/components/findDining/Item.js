@@ -4,13 +4,12 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import React, {useState} from "react";
+import React from "react";
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
 
 const API_KEY = process.env.REACT_APP_api_key;
-const goog_key = process.env.REACT_APP_goog_key;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,26 +52,21 @@ export default function Item({itemList, cords}){
       url.searchParams.append("maxheight", "128");
       url.searchParams.append("maxwidth", "128");
       url.searchParams.append("photoreference", photoId);
-      return(<img src={url['href']}></img>)
+      return(<img alt="" src={url['href']}></img>)
     }
-
-    //{getImage(item['photos'][0]['photo_reference'])}
-
-    //console.log(itemList[0]['photos'][0]['photo_reference']);
 
     /*
      <Typography variant="body1" color="textSecondary">
       { (item['vicinity'] != undefined) ? "Vicinity: "+item['vicinity'] : ''}
      </Typography>
     */
-    console.log(itemList)
     return(
         <div>
 
             <div>
-                {itemList.map((item) => (
-                  (item.opening_hours != undefined && item.opening_hours.open_now) ? (
-                    <div className={classes.root}>
+                {itemList.map((item, index) => (
+                  (item.opening_hours !== undefined && item.opening_hours.open_now) && (
+                    <div className={classes.root} key={index}>
                     <Paper className={classes.paper}>
                       <Grid container spacing={2}>
                         <Grid item>
@@ -87,10 +81,10 @@ export default function Item({itemList, cords}){
                                 {item['name']}
                               </Typography>
                               <Typography variant="body1" gutterBottom>
-                              { (item['rating'] != undefined) ? "Rating: "+item['rating']+"/5" : ''}
+                              { (item['rating'] !== undefined) ? "Rating: "+item['rating']+"/5" : ''}
                               </Typography>
                               <Typography variant="body1" gutterBottom>
-                              { (item['price_level'] != undefined) ? "Price: "+item['price_level']+"/5" : ''}
+                              { (item['price_level'] !== undefined) ? "Price: "+item['price_level']+"/5" : ''}
                               </Typography>
                             </Grid>
                             <Grid item xs>
@@ -104,7 +98,7 @@ export default function Item({itemList, cords}){
                         </Grid>
                       </Grid>
                     </Paper>
-                    </div>) : <div>{/*item['name']*/}</div>
+                    </div>)
                 ))}
             </div>  
         </div>

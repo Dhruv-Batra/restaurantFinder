@@ -38,8 +38,6 @@ export default function Hourly({long,lati}){
             setHour(obj);
         });
 
-        console.log(hour.hourly[0].weather[0]);
-
     }, [long,lati]);
 
     const StyledTableCell = withStyles((theme) => ({
@@ -75,16 +73,16 @@ export default function Hourly({long,lati}){
                 </TableHead>
                 <TableBody>
                 {hour.hourly.map((item, index) => (
-                    (index <= 23) ? (
-                    <StyledTableRow key={item.name}>
+                    (index <= 23) && (
+                    <StyledTableRow key={index}>
                     <StyledTableCell component="th" scope="row">
                         {index+1}
                     </StyledTableCell>
-                    <StyledTableCell align="right"><img src={"https://openweathermap.org/img/w/"+item.weather[0].icon+".png"}></img></StyledTableCell>
+                    <StyledTableCell align="right"><img alt="" src={"https://openweathermap.org/img/w/"+item.weather[0].icon+".png"}></img></StyledTableCell>
                     <StyledTableCell align="right">{item.weather[0].description}</StyledTableCell>
                     <StyledTableCell align="right">{item.temp}</StyledTableCell>
                     <StyledTableCell align="right">{item.feels_like}</StyledTableCell>
-                    </StyledTableRow>) : <div></div>
+                    </StyledTableRow>)
                 ))}
                 </TableBody>
             </Table>

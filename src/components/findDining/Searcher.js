@@ -25,10 +25,8 @@ export default function Searcher({cords,searchs,sort}){
         .then((obj) => {
             setData(obj);
         });   
-        console.log(data['results']);
+        //console.log(data['results']);
     },[cords,searchs])
-
-    const [itemList1, setItemList] = useState(data['results']);
 
     function compareName(a, b) {
         if (a.name<b.name) {
@@ -71,7 +69,7 @@ export default function Searcher({cords,searchs,sort}){
 
     return(
         <div>
-            <Grid container spacing={9} justify="right">
+            <Grid container spacing={9}>
                 <Grid item xs={6}>
                     <Item
                         itemList={(sort==='name') ? data['results'].sort(compareName) 

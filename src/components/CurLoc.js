@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useContext} from "react";
 import {Button} from '@material-ui/core/';
 import {CordsContext} from '../contexts/CordsContext';
 

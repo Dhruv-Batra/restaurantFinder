@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactMapGL, {Popup, Marker} from 'react-map-gl';
 import { Button } from "@material-ui/core";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 export default function App({cords, itemList}) {
@@ -13,11 +13,11 @@ export default function App({cords, itemList}) {
 
   //console.log(itemList);
 
-  const markers = itemList.map((item) => (
-    (item.opening_hours != undefined && item.opening_hours.open_now) ? (
-      <Marker longitude={item.geometry.location.lng} latitude={item.geometry.location.lat} >
-        <img src="https://img.icons8.com/color/48/000000/map-pin.png" onClick={() => togglePopup(item)}/>
-      </Marker>) : <div></div>
+  const markers = itemList.map((item,index) => (
+    (item.opening_hours !== undefined && item.opening_hours.open_now) && (
+      <Marker longitude={item.geometry.location.lng} latitude={item.geometry.location.lat} key={index}>
+        <img src="https://img.icons8.com/color/48/000000/map-pin.png" alt="" onClick={() => togglePopup(item)}/>
+      </Marker>)
   ), [itemList]);
 
   useEffect(() => {

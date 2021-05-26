@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState,  useContext} from "react";
 import {Button, TextField, Grid} from '@material-ui/core/';
 import {CordsContext} from '../contexts/CordsContext';
 import CurLoc from './CurLoc'
@@ -7,7 +7,7 @@ const goog_key = process.env.REACT_APP_goog_key;
 
 export default function Address(){
 
-    const {cords, setCords} = useContext(CordsContext);
+    const {setCords} = useContext(CordsContext);
     const [address, setAddress] = useState("Please Enter a Valid Address");
 
     function handleClick(){

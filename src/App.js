@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Main from './components/findDining/Main'
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import React from 'react';
+import { Route, Switch } from "react-router-dom";
 import Navbar from './components/findDining/navbar'
 import WInput from './components/weather/WInput'
 import Home from './components/Home'
@@ -16,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-     <div class="App-body">
+     <div className="App-body">
        <Navbar/>
       <br></br>
       <CordsProvider>

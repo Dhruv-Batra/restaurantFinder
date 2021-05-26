@@ -1,27 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import Current from './Current';
-import { Grid, Button } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Hourly from './Hourly';
 import {CordsContext} from '../../contexts/CordsContext';
-import CurLoc from '../CurLoc';
 import Address from '../Address'
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        '& > *': {
-        margin: theme.spacing(1),
-        },
-    },
-}));
-
 
 export default function WInput(w){
-    const classes = useStyles();
 
-    const [weather, setWeather] = useState(null);
     //const [cords, setCords] = useState(['-78.507','38.033']);
     const {cords, setCords} = useContext(CordsContext);
 
@@ -39,26 +24,12 @@ export default function WInput(w){
 
     //<pre>{JSON.stringify(weather, undefined, 4)}</pre>
 
-    const [showCurr, setShowCurr] = useState(false);
-    const [showHour, setShowHour] = useState(false);
-
-    function handleCurrClick(){
-        setShowCurr(true);
-        setShowHour(false);
-    }
-
-    function handleHourClick(){
-        setShowCurr(false);
-        setShowHour(true);
-    }
-
     return(cords&&lon&&lat&&(
         <div>
             <Grid
                 container
-                direction="row  "
+                direction="row"
                 justify="center"
-                alignItems="top"
                 spacing={5}
             >
                     <Grid item xs={3}>
