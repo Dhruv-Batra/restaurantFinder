@@ -21,9 +21,12 @@ export default function Address(){
             })
             .then((obj) => {
                 return (obj['results'][0].geometry.location);
-            }).then((loc) => {
+            })
+            .catch((e)=>console.log('Invalid Address'))
+            .then((loc) => {
                 return setCords([loc['lng'], loc['lat']])
-            });   
+            })
+            .catch((e)=>alert('Invalid Address'));   
         }catch(e){
             console.log('Invalid Address')
         }
