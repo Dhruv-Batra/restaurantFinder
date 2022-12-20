@@ -2,6 +2,12 @@
 
 This app uses the React Router for the different pages. Aside from the home page, there are restaurant finder and weather checking pages. The restaurant finder uses the google places, the google maps, and MapBox APIs to display nearby restaurants based on the search filters inputted by the user. The weather checker uses the OpenWeatherApp api to display current and hourly weather. Location for both of these features can be acquired either from user input or from their current location. 
 
+![Home](https://user-images.githubusercontent.com/47730411/208568137-146cf58c-a7cf-4bdd-b333-0eafa5445582.png)
+![find dining](https://user-images.githubusercontent.com/47730411/208568164-7d37f977-7be9-45fb-8eb3-8d4ca6b022cc.png)
+![weather](https://user-images.githubusercontent.com/47730411/208568180-0e95b8e8-d748-4ff5-8a20-99d1f30eac62.png)
+
+
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
