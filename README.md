@@ -1,5 +1,10 @@
 # Outing Planner
 
+What is wrong with this code?/What I would change: (I have improved since I wrote it a couple years ago):
+- Lack of Comments
+- Not Mobile-Optimized
+- Styling is done with makeStyles instead of stylesheets which clutters code
+
 This app uses the React Router for the different pages. Aside from the home page, there are restaurant finder and weather checking pages. The restaurant finder uses the google places, the google maps, and MapBox APIs to display nearby restaurants based on the search filters inputted by the user. The weather checker uses the OpenWeatherApp api to display current and hourly weather. Location for both of these features can be acquired either from user input or from their current location. 
 
 ![Home](https://user-images.githubusercontent.com/47730411/208568137-146cf58c-a7cf-4bdd-b333-0eafa5445582.png)
